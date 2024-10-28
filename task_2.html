@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      .gallery {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+      }
+
+      .gallery-item {
+        flex-shrink: 0;
+      }
+
+      .gallery-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="gallery"></ul>
+    <script type="application/javascript">
+      const images = [
+        {
+          url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+          alt: "White and Black Long Fur Cat",
+        },
+        {
+          url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+          alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+        },
+        {
+          url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+          alt: "Group of Horses Running",
+        },
+      ];
+
+      // Знаходимо список ul.gallery
+      const galleryList = document.querySelector(".gallery");
+
+      // Створюємо розмітку для галереї
+      const galleryItemsMarkup = images
+        .map(
+          ({ url, alt }) =>
+            `<li class="gallery-item"><img width="500" src="${url}" alt="${alt}" class="gallery-image"></li>`
+        )
+        .join("");
+
+      // Додаємо розмітку в DOM за одну операцію
+      galleryList.insertAdjacentHTML("beforeend", galleryItemsMarkup);
+    </script>
+  </body>
+</html>
