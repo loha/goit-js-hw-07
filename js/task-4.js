@@ -1,12 +1,23 @@
-// Знаходимо необхідні елементи
-const nameInput = document.querySelector("#name-input");
-const nameOutput = document.querySelector("#name-output");
+document.getElementById("form").addEventListener("submit", function (event) {
+  event.preventDefault();
 
-// Додаємо обробник події input
-nameInput.addEventListener("input", () => {
-  // Отримуємо значення з інпуту і обрізаємо пробіли
-  const trimmedValue = nameInput.value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-  // Якщо trimmedValue не порожнє, підставляємо його у span
-  nameOutput.textContent = trimmedValue ? trimmedValue : "Anonymous";
+  if (!email || !password) {
+    alert("All form fields must be filled in");
+    return;
+  }
+
+  console.log({
+    email,
+    password,
+  });
+
+  reset();
 });
+
+function reset() {
+  document.getElementById("email").value = "";
+  document.getElementById("password").value = "";
+}
